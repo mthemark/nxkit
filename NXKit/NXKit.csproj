@@ -34,8 +34,4 @@
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.Xaml" />
-  </ItemGroup>
-
 </Project>

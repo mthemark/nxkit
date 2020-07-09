@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net462</TargetFramework>
+        <TargetFramework>net472</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Product>NXKit View Server</Product>
         <Description>NXKit server side view server component.</Description>

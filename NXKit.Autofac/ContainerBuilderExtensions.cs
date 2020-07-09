@@ -41,24 +41,6 @@ namespace NXKit.Autofac
         /// <summary>
         /// Registers the specified NXKit assembly into the given Autofac builder.
         /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="dependencyContext"></param>
-        /// <returns></returns>
-        public static ContainerBuilder RegisterNXKit(this ContainerBuilder builder, DependencyContext dependencyContext)
-        {
-            if (builder is null)
-                throw new ArgumentNullException(nameof(builder));
-            if (dependencyContext is null)
-                throw new ArgumentNullException(nameof(dependencyContext));
-
-            builder.RegisterNXKit(SafeAssemblyLoader.LoadAll(dependencyContext).ToArray());
-
-            return builder;
-        }
-
-        /// <summary>
-        /// Registers the specified NXKit assembly into the given Autofac builder.
-        /// </summary>
         /// <param name="assembly"></param>
         /// <returns></returns>
         public static ContainerBuilder RegisterNXKit(this ContainerBuilder builder, params Assembly[] assemblies)

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net47</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>NXKit Scripting: ECMAScript (V8)</Product>
     <Description>NXKit scripting support for ECMAScript using the V8 engine.</Description>

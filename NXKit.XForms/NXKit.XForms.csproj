@@ -31,10 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.Xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Events.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Events.partial.cs</LastGenOutput>
