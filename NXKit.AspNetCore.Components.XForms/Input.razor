@@ -39,13 +39,13 @@
 {
 
     static readonly XNamespace xs = "http://www.w3.org/2001/XMLSchema";
-    static readonly XNamespace xd = "http://www.w3.org/2001/XMLSchema-datatypes";
+    //static readonly XNamespace xd = "http://www.w3.org/2001/XMLSchema-datatypes";
     static readonly XNamespace xf = "http://www.w3.org/2002/xforms";
 
     static readonly HashSet<XName> booleanTypes = new HashSet<XName>()
 {
         xs + "boolean",
-        xd + "boolean",
+        //xd + "boolean",
         xf + "boolean",
     };
 
@@ -68,25 +68,25 @@
         xs + "unsignedByte",
         xs + "positiveInteger",
 
-        xd + "decimal",
-        xd + "float",
-        xd + "double",
-        xd + "integer",
-        xd + "nonPositiveInteger",
-        xd + "negativeInteger",
-        xd + "long",
-        xd + "int",
-        xd + "short",
-        xd + "byte",
-        xd + "nonNegativeInteger",
-        xd + "unsignedLong",
-        xd + "unsignedInt",
-        xd + "unsignedShort",
-        xd + "unsignedByte",
-        xd + "positiveInteger",
+//        xd + "decimal",
+//        xd + "float",
+//        xd + "double",
+//        xd + "integer",
+//        xd + "nonPositiveInteger",
+//        xd + "negativeInteger",
+//        xd + "long",
+//        xd + "int",
+//        xd + "short",
+//        xd + "byte",
+//        xd + "nonNegativeInteger",
+//        xd + "unsignedLong",
+//        xd + "unsignedInt",
+//        xd + "unsignedShort",
+//        xd + "unsignedByte",
+//        xd + "positiveInteger",
 
         xf + "integer",
-        xf + "nonPositiveInteger",
+        //xf + "nonPositiveInteger",
         xf + "negativeInteger",
         xf + "long",
         xf + "int",
@@ -103,14 +103,14 @@
     static readonly HashSet<XName> dateTypes = new HashSet<XName>()
 {
         xs + "date",
-        xd + "date",
+        //xd + "date",
         xf + "date",
     };
 
     static readonly HashSet<XName> timeTypes = new HashSet<XName>()
 {
         xs + "time",
-        xd + "time",
+        //xd + "time",
         xf + "time",
     };
 
@@ -129,14 +129,14 @@
         var sourceType = UIBindingNode.UIBinding.ModelItem.Model.State.XmlSchemas.GetSchemaType(source);
         if (sourceType == null)
         {
-            Console.WriteLine("Could not resolve {0}.", source);
+            Console.WriteLine("Could not resolve source:{0}.", source);
             return false;
         }
 
         var targetType = UIBindingNode.UIBinding.ModelItem.Model.State.XmlSchemas.GetSchemaType(target);
         if (targetType == null)
         {
-            Console.WriteLine("Could not resolve {0}.", target);
+            Console.WriteLine("Could not resolve target:{0}.", target);
             return false;
         }
 
