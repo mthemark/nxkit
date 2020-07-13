@@ -4,4 +4,17 @@
 
 <h1>Sample</h1>
 
+@* does not allow data input, seems to be some rendering issues i.e. all the drop down options are amalgamated and listed in one big list *@
 <NXView DocumentUri="@(new Uri("nx-example:///form.xml"))" />
+
+@* dropdown does not seem to have any values to select *@
+@*<NXView DocumentUri="@(new Uri("nx-example:///select1.xml"))" />*@
+
+@* Does not allow input into the field, insert and delete throw exceptions *@
+@*<NXView DocumentUri="@(new Uri("nx-example:///insert.xml"))" />*@
+
+@* Allows input but submit does not seem to work *@
+@*<NXView DocumentUri="@(new Uri("nx-example:///submit.xml"))" />*@
+
+@* this form allow user input into the input control, seems it does not have any events like other forms do*@
+@*<NXView DocumentUri="@(new Uri("nx-example:///basic.xml"))" />*@
