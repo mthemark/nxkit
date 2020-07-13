@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Cogito.Autofac" Version="1.2.21" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.4" />
     <PackageReference Include="NUnit" Version="3.12.0" />
   </ItemGroup>
 
