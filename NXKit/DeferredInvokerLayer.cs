@@ -174,6 +174,7 @@ namespace NXKit
             try
             {
                 count++;
+                trace.Debug("Processing deferred invoke behaviors at depth {Count}.", count);
 
                 bool run;
                 do

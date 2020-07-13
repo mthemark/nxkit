@@ -196,6 +196,7 @@ namespace NXKit.XForms
                 element.Remove();
             }
 
+            System.Console.WriteLine("NXKit:XForms:Model:OnModelConstruct");
             // build, compile, and check
             State.XmlSchemas = builder.Build(ValidationEventHandler);
             if (State.XmlSchemas.IsCompiled == false)

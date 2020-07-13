@@ -85,6 +85,7 @@ namespace NXKit.XForms
                 using (var rdr = element.CreateReader())
                     b.Add(XmlSchema.Read(rdr, (s, a) => { }));
 
+            System.Console.WriteLine("NXKit:XForms:ModelState:DeserializeXmlSchemas");
             XmlSchemas = b.Build();
         }
 
