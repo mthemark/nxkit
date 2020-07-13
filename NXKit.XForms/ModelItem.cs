@@ -283,10 +283,10 @@ namespace NXKit.XForms
         /// <returns></returns>
         string GetValue()
         {
-            if (xml is XElement)
-                return !((XElement)xml).HasElements ? ((XElement)xml).Value : null;
-            else if (xml is XAttribute)
-                return ((XAttribute)xml).Value;
+            if (xml is XElement element)
+                return !element.HasElements ? element.Value : null;
+            else if (xml is XAttribute attribute)
+                return attribute.Value;
             else
                 throw new InvalidOperationException();
         }
@@ -411,8 +411,8 @@ namespace NXKit.XForms
         /// <returns></returns>
         XElement GetContents()
         {
-            if (xml is XElement)
-                return ((XElement)xml).HasElements ? (XElement)((XElement)xml).FirstNode : null;
+            if (xml is XElement element)
+                return element.HasElements ? (XElement)element.FirstNode : null;
             else
                 throw new InvalidOperationException();
         }
@@ -678,10 +678,10 @@ namespace NXKit.XForms
         /// <returns></returns>
         IXmlSchemaInfo GetSchemaInfo()
         {
-            if (xml is XAttribute)
-                return ((XAttribute)xml).GetSchemaInfo();
-            if (xml is XElement)
-                return ((XElement)xml).GetSchemaInfo();
+            if (xml is XAttribute attribute)
+                return attribute.GetSchemaInfo();
+            if (xml is XElement element)
+                return element.GetSchemaInfo();
 
             return null;
         }
