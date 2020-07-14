@@ -145,7 +145,7 @@ namespace NXKit.Autofac
             // generic type exports are specially handled
             if (type.IsGenericTypeDefinition)
             {
-                RegisterGenericExports(builder, type, exports, scope);
+                builder.RegisterGeneric(type);
                 return;
             }
 
@@ -309,7 +309,15 @@ namespace NXKit.Autofac
             registrationData.Lifetime = GetTag(scope) is string tag ? (IComponentLifetime)new MatchingScopeLifetime(tag) : new RootScopeLifetime();
             registrationData.Sharing = InstanceSharing.Shared;
             registrationData.Ownership = InstanceOwnership.OwnedByLifetimeScope;
-            builder.RegisterSource(new OpenGenericRegistrationSource(registrationData, new ReflectionActivatorData(type)));
+            try
+            {
+                Console.WriteLine($"{nameof(RegisterGenericExports)}:{type.Name}");
+                builder.RegisterSource(new OpenGenericRegistrationSource(registrationData, new ReflectionActivatorData(type)));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{nameof(RegisterGenericExports)}:{e}");
+            }
         }
 
     }
