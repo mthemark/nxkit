@@ -47,7 +47,21 @@ namespace NXKit.Extensions.DependencyInjection
 
             return services;
         }
-
+        public static void AddNXKitAssemblies(this IServiceCollection services, Assembly[] assemblies)
+        {
+            foreach (var asm in assemblies)
+            {
+                Console.WriteLine($"AutoF@cked-NetCore Try {nameof(AddNXKitAssemblies)} for : {asm.FullName}");
+                try
+                {
+                    services.AddNXKitAssembly(asm);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
+        }
         /// <summary>
         /// Registers the specified NXKit assembly into the given service collection.
         /// </summary>
@@ -61,7 +75,7 @@ namespace NXKit.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(assembly));
 
             // makes the composition context wrapper available to NXKit
-            services.AddTransient<ICompositionContext>(ctx => new CompositionContext(ctx.GetRequiredService<IServiceScope>()));
+            services.AddTransient<ICompositionContext>(ctx => new CompositionContext(ctx.GetRequiredService<IServiceScope>(), ctx.GetRequiredService<IServicesAssessor>()));
 
             // add all of the various exports to the container
             AddExports(services, assembly, CompositionScope.Global);
@@ -135,8 +149,10 @@ namespace NXKit.Extensions.DependencyInjection
 
             // generic type exports are specially handled
             if (type.IsGenericTypeDefinition)
-                throw new NotImplementedException();
-
+            {
+                Console.WriteLine($"AutoF@cked-NetCore Generic Type Register for : {type.FullName}");
+                services.AddScoped(type);
+            }
             // make underlying types available
             AddService(services, type, type, scope);
 

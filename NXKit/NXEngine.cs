@@ -83,14 +83,22 @@ namespace NXKit
             if (uri is null)
                 throw new ArgumentNullException(nameof(uri));
 
-            return new Document(host =>
-                host.Context.Resolve<AnnotationSerializer>().Deserialize(
-                    XDocument.Load(
-                        NXKit.Xml.IOXmlReader.Create(
-                            host.Context.Resolve<IIOService>(),
-                            uri),
-                        LoadOptions.PreserveWhitespace | LoadOptions.SetBaseUri)),
-                context);
+            try
+            {
+                return new Document(host =>
+                    host.Context.Resolve<AnnotationSerializer>().Deserialize(
+                        XDocument.Load(
+                            NXKit.Xml.IOXmlReader.Create(
+                                host.Context.Resolve<IIOService>(),
+                                uri),
+                            LoadOptions.PreserveWhitespace | LoadOptions.SetBaseUri)),
+                    context);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NXEngine.Load Failed: " + e.ToString());
+                throw e;
+            }
         }
 
         /// <summary>

@@ -1,34 +1,21 @@
-﻿using Autofac;
-using Autofac.Extensions.DependencyInjection;
-
-using Microsoft.AspNetCore.Blazor.Hosting;
-
-using NXKit.Autofac;
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using NXKit.Extensions.DependencyInjection;
 
 namespace NXKit.AspNetCore.Blazor.Examples.Client
 {
 
     public static class Program
     {
-
         public static void Main(string[] args)
         {
-            BlazorWebAssemblyHost.CreateDefaultBuilder()
-                .UseServiceProviderFactory(new AutofacServiceProviderFactory(BuildContainer))
-                .UseBlazorStartup<Startup>()
-                .Build()
-                .Run();
-        }
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            //.UseServiceProviderFactory(new AutofacServiceProviderFactory(BuildContainer))
+            //builder.ConfigureContainer(new AutofacServiceProviderFactory(BuildContainer));
 
-        static void BuildContainer(ContainerBuilder builder)
-        {
-            builder.RegisterAssemblyModules(new[]
-            {
-                typeof(Program).Assembly,
-                typeof(Cogito.Extensions.Logging.Autofac.AssemblyModule).Assembly,
-            });
-
-            builder.RegisterNXKit(new[]
+            builder.Services.AddSingleton<IServicesAssessor, ServicesAssessor>(a => new ServicesAssessor(builder.Services));
+            builder.Services.AddSingleton<IServiceScope, ServiceScope>();
+            builder.Services.AddNXKitAssemblies(new[]
             {
                 typeof(NXKit.DocumentEnvironment).Assembly,
                 typeof(NXKit.AspNetCore.Components._Imports).Assembly,
@@ -48,6 +35,11 @@ namespace NXKit.AspNetCore.Blazor.Examples.Client
                 typeof(NXKit.XHtml.Div).Assembly,
                 typeof(NXKit.AspNetCore.Components.XHtml._Imports).Assembly,
             });
+
+            builder.RootComponents.Add<App>("app");
+            builder
+                .Build()
+                .RunAsync();
         }
 
     }

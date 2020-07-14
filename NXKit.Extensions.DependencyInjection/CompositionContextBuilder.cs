@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using NXKit.Composition;
 
 using System;
+using System.Xml.Linq;
 
 namespace NXKit.Extensions.DependencyInjection
 {
@@ -24,10 +25,13 @@ namespace NXKit.Extensions.DependencyInjection
             this.services = services ?? throw new ArgumentNullException(nameof(services));
         }
 
-        public ICompositionContextBuilder AddInstance<T>(T instance)
+        public ICompositionContextBuilder AddInstance<T>(T instance) 
             where T : class
         {
-            throw new NotSupportedException();
+            Console.WriteLine($"AutoF@cked-NetCore {nameof(AddInstance)} for : {instance.GetType()}");
+            //services.AddScoped(a => instance as XObject);
+            services.AddScoped(a => instance);
+            return this;
         }
 
     }
