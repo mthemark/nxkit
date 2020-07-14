@@ -54,13 +54,13 @@ namespace NXKit
             this.xml.AddAnnotation(this);
 
             // parallel initialization of common interfaces
-            Parallel.ForEach(this.xml.DescendantNodesAndSelf(), i =>
+            foreach(var i in this.xml.DescendantNodesAndSelf())
             {
                 Enumerable.Empty<object>()
                     .Concat(i.Interfaces<IOnInit>())
                     .Concat(i.Interfaces<IOnLoad>())
                     .ToLinkedList();
-            });
+            }
 
             // initial invocation entry
             invoker.Invoke(() => { });
