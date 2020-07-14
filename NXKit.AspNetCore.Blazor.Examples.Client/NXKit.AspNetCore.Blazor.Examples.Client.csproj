@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Blazor.Extensions.Logging" Version="1.1.1" />
     <PackageReference Include="Cogito.Core" Version="3.0.4" />
     <PackageReference Include="Cogito.Extensions.Logging" Version="1.1.2" />
@@ -18,6 +19,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +27,7 @@
     <ProjectReference Include="..\NXKit.AspNetCore.Components.XForms\NXKit.AspNetCore.Components.XForms.csproj" />
     <ProjectReference Include="..\NXKit.AspNetCore.Components.XHtml\NXKit.AspNetCore.Components.XHtml.csproj" />
     <ProjectReference Include="..\NXKit.AspNetCore.Components\NXKit.AspNetCore.Components.csproj" />
+    <ProjectReference Include="..\NXKit.Autofac\NXKit.Autofac.csproj" />
     <ProjectReference Include="..\NXKit.DOMEvents\NXKit.DOMEvents.csproj" />
     <ProjectReference Include="..\NXKit.DOM\NXKit.DOM.csproj" />
     <ProjectReference Include="..\NXKit.Extensions.DependencyInjection\NXKit.Extensions.DependencyInjection.csproj" />
